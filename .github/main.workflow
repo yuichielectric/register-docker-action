@@ -5,7 +5,7 @@ workflow "deploy docker" {
 
 action "login" {
   uses = "actions/docker/login@master"
-  secrets = ["DOCKER_USERNAME", "DOCKER_PASSWORD", DOCKER_REGISTRY_URL]
+  secrets = ["DOCKER_USERNAME", "DOCKER_PASSWORD", "DOCKER_REGISTRY_URL"]
 }
 
 action "build" {
