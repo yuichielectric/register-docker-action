@@ -4,7 +4,7 @@ workflow "deploy docker" {
 }
 
 action "debug" {
-  uses = "actions/bin/debug"
+  uses = "actions/bin/debug@master"
 }
 
 action "login" {
