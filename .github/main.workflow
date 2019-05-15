@@ -14,8 +14,22 @@ action "build" {
   args = "build -t yuichielectric/register-docker-action ."
 }
 
-action "push" {
+action "tag" {
   needs = ["build"]
+  uses = "actions/docker/tag@master"
+  env = {
+    IMAGE_NAME = "docker-image"
+    CONTAINER_REGISTRY_PATH = "docker.pkg.github.com/yuichielectric/danger-textlint-actions"
+  }
+  args = ["$IMAGE_NAME", "$CONTAINER_REGISTRY_PATH/$IMAGE_NAME"]
+}
+
+action "push" {
+  needs = ["tag"]
   uses = "actions/docker/cli@master"
-  args = "push docker.pkg.github.com/yuichielectric/register-docker-action:1.0.0"
+  env = {
+    IMAGE_NAME = "docker-image"
+    CONTAINER_REGISTRY_PATH = "docker.pkg.github.com/yuichielectric/danger-textlint-actions"
+  }
+  args = ["push", "$CONTAINER_REGISTRY_PATH/$IMAGE_NAME"]
 }
