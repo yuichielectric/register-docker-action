@@ -11,7 +11,7 @@ action "login" {
 action "build" {
   needs = ["login"]
   uses = "actions/docker/cli@master"
-  args = "build -t yuichielectric/register-docker-action ."
+  args = "build -t docker-image ."
 }
 
 action "tag" {
