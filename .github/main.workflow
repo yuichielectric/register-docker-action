@@ -19,7 +19,7 @@ action "tag" {
   uses = "actions/docker/tag@master"
   env = {
     IMAGE_NAME = "docker-image"
-    CONTAINER_REGISTRY_PATH = "docker.pkg.github.com/yuichielectric/danger-textlint-actions"
+    CONTAINER_REGISTRY_PATH = "docker.pkg.github.com/yuichielectric/register-docker-action"
   }
   args = ["$IMAGE_NAME", "$CONTAINER_REGISTRY_PATH/$IMAGE_NAME"]
 }
@@ -29,7 +29,7 @@ action "push" {
   uses = "actions/docker/cli@master"
   env = {
     IMAGE_NAME = "docker-image"
-    CONTAINER_REGISTRY_PATH = "docker.pkg.github.com/yuichielectric/danger-textlint-actions"
+    CONTAINER_REGISTRY_PATH = "docker.pkg.github.com/yuichielectric/register-docker-action"
   }
   args = ["push", "$CONTAINER_REGISTRY_PATH/$IMAGE_NAME"]
 }
