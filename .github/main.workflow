@@ -3,12 +3,7 @@ workflow "deploy docker" {
   on = "issues"
 }
 
-action "debug" {
-  uses = "actions/bin/debug@master"
-}
-
 action "login" {
-  needs = ["debug"]
   uses = "actions/docker/login@master"
   secrets = ["DOCKER_USERNAME", "DOCKER_PASSWORD", "DOCKER_REGISTRY_URL"]
 }
