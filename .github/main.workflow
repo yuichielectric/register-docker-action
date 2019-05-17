@@ -1,6 +1,6 @@
 workflow "deploy docker" {
   resolves = "push"
-  on = "issues"
+  on = "release"
 }
 
 action "login" {
